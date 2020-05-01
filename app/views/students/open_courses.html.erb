@@ -1,0 +1,37 @@
+<div class="basic">
+
+  <div class="table">
+    <table>
+      <tr>
+        <th><%= link_to "Class", :sort => "class_id" %></th>
+        <th><%= link_to "Section", :sort => "section" %></th>
+        <th><%= link_to "Component", :sort => "component" %></th>
+        <th><%= link_to "Days", :sort => "days" %></th>
+        <th><%= link_to "Start", :sort => "start" %></th>
+        <th><%= link_to "End", :sort => "end" %></th>
+        <th><%= link_to "Location", :sort => "location" %></th>
+        <th><%= link_to "Professor", :sort => "professor" %></th>
+        <th><%= link_to "Grader", :sort => "grader" %></th>
+        <th><%= link_to "Graders Needed", :sort => "gradersneeded" %></th>
+        <th><%= link_to "Graders Filled", :sort => "gradersfilled" %></th>
+      </tr>
+      <% @courses.each do |course| %>
+        <% if course.gradersneeded > 0 %>
+          <tr>
+            <td><%= course.class_id %></td>
+            <td><%= course.section %></td>
+            <td><%= course.component %></td>
+            <td><%= course.days %></td>
+            <td><%= course.start.strftime("%H:%M") %></td>
+            <td><%= course.end.strftime("%H:%M") %></td>
+            <td><%= course.location %></td>
+            <td><%= course.professor %></td>
+            <td><%= course.grader %></td>
+            <td style="text-align: center"><%= course.gradersneeded %></td>
+            <td style="text-align: center"><%= course.gradersfilled %></td>
+          </tr>
+        <% end %>
+      <% end %>
+    </table>
+  </div>
+</div>

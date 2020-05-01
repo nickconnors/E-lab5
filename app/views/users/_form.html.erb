@@ -1,0 +1,16 @@
+<%= form_for @user do |f| %>
+  <h2><%= @user.email %></h2>
+  <p>
+    <%= f.label 'Teacher?:' %>
+    <%= f.check_box :teacher %>
+  </p>
+  <p>
+    <%= f.label 'Admin?:' %>
+    <%= f.check_box :admin %>
+  </p>
+  <div class="form-actions">
+    <p>
+      <%= f.submit %>
+    </p>
+  </div>
+<% end %>

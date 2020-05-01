@@ -1,0 +1,32 @@
+Enter the grader's info and evaluation
+<%= form_for @evaluation do |f| %>
+  <p>
+    <%= f.label 'Grader First Name:' %>
+    <%= f.text_field :firstname %>
+  </p>
+  <p>
+    <%= f.label 'Grader Last Name:' %>
+    <%= f.text_field :lastname %>
+  </p>
+  <p>
+    <%= f.label 'Grader Dot Number:' %>
+    <%= f.text_field :dotnumber %>
+  </p>
+  <p>
+    <%= f.label 'Class Name' %>
+    <%= f.collection_select(:class_id, Course.select(:class_id).distinct, :class_id, :class_id) %>
+  </p>
+  <p>
+    <%= f.label 'Rating out of 10' %>
+    <%= f.select :rating, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], :prompt => 'Select Rating' %>
+  </p>
+  <p>
+    <%= f.label 'Please enter a brief review or justification for rating' %>
+    <%= f.text_field :review %>
+  </p>
+  <div class="form-actions">
+    <p>
+      <%= f.submit %>
+    </p>
+  </div>
+<% end %>

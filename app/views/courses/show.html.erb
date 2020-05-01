@@ -1,0 +1,24 @@
+<div class="basic">
+  <h2>Course Information</h2>
+  <p><strong>Class: </strong><%= @course.class_id %></p>
+  <p><strong>Section: </strong><%= @course.section %></p>
+  <p><strong>Component: </strong><%= @course.component %></p>
+  <p><strong>Days: </strong><%= @course.days %></p>
+  <p><strong>Start: </strong><%= @course.start.strftime("%H:%M") %></p>
+  <p><strong>End: </strong><%= @course.end.strftime("%H:%M") %></p>
+  <p><strong>Location: </strong><%= @course.location %></p>
+  <p><strong>Professor: </strong><%= @course.professor %></p>
+  <p><strong>Grader: </strong><%= @course.grader %></p>
+  <p><strong>Graders Needed: </strong><%= @course.gradersneeded %></p>
+  <p><strong>Graders Filled: </strong><%= @course.gradersfilled %></p>
+
+
+  <p><%= link_to '<button type="button">Edit</button>'.html_safe, edit_course_path(@course) %></p>
+  <p><%= link_to '<button type="button">Delete</button>'.html_safe, course_path(@course),
+                 method: :delete,
+                 data: {confirm: 'Are you sure?'} %></p>
+
+  <p>
+    <%= link_to '<button type="button">All Courses</button>'.html_safe, courses_path %>
+  </p>
+</div>

@@ -1,0 +1,25 @@
+<div class="basic">
+  <h1>All Recommendations</h1>
+  <div class="table">
+    <table>
+      <tr>
+        <th><%= link_to "Graders First Name", :sort => "firstname" %></th>
+        <th><%= link_to "Graders Last Name", :sort => "lastname" %></th>
+        <th><%= link_to "Graders Dotnumber", :sort => "dotnumber" %></th>
+        <th><%= link_to "Class ID", :sort => "class_id" %></th>
+        <th><%= link_to "Recommended By", :sort => "email" %></th>
+      </tr>
+
+      <% @recommendations.each do |rec| %>
+        <tr>
+          <td><%= rec.firstname %></td>
+          <td><%= rec.lastname %></td>
+          <td style="text-align: center"><%= rec.dotnumber %></td>
+          <td><%= rec.class_id %></td>
+          <td><%= rec.email %></td>
+        </tr>
+      <% end %>
+    </table>
+    <%= link_to 'Back', admin_path %>
+  </div>
+</div>

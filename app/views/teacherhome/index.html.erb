@@ -1,0 +1,21 @@
+<div class="basic">
+  <h1>Teachers</h1>
+  <% if Recommendation.exists?(:email => @user.email) %>
+    <p><%= link_to "New recommendations", new_recommendation_path %></p>
+  <% else %>
+    <p><%= link_to "New recommendations", new_recommendation_path %></p>
+  <% end %>
+
+  <% if Request.exists?(:email => @user.email) %>
+    <p><%= link_to "New request", new_request_path %></p>
+  <% else %>
+    <p><%= link_to "New request", new_request_path %></p>
+  <% end %>
+
+  <% if Evaluation.exists?(:email => @user.email) %>
+    <p><%= link_to "New evaluations", new_evaluation_path %></p>
+  <% else %>
+    <p><%= link_to "New evaluations", new_evaluation_path %></p>
+  <% end %>
+
+</div>

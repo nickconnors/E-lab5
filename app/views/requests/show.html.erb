@@ -1,0 +1,21 @@
+<div class="basic">
+  <%- #Show all fields of a request after submitting  -%>
+  <h1>Thank your submitting a request</h1>
+  <table>
+    <tr>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Dot Number</th>
+      <th>Class Name</th>
+      <th>Section</th>
+    </tr>
+
+    <tr>
+      <td><%= @request.firstname %></td>
+      <td><%= @request.lastname %></td>
+      <td><%= @request.dotnumber %></td>
+      <td><%= @request.class_id %></td>
+      <td><%= @request.section %></td>
+    </tr>
+  </table>
+</div>

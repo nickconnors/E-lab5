@@ -1,0 +1,35 @@
+<div class="basic">
+  <div class="table">
+    <h1>All Current Evaluations</h1>
+    <table>
+      <tr>
+        <%- #Display all fields of evauluation with sorthing functionality   -%>
+        <th><%= link_to "Grader First Name", :sort => "firstname" %></th>
+        <th><%= link_to "Graders Last Name", :sort => "lastname" %></th>
+        <th><%= link_to "Grader Dotnumber", :sort => "dotnumber" %></th>
+        <th><%= link_to "Class", :sort => "class_id" %></th>
+        <th><%= link_to "Rating", :sort => "rating" %></th>
+        <th><%= link_to "Review", :sort => "review" %></th>
+        <th><%= link_to "Teacher's Email", :sort => "email" %></th>
+      </tr>
+
+      <% @evaluation.each do |rec| %>
+
+        <tr>
+          <td><%= rec.firstname %></td>
+          <td><%= rec.lastname %></td>
+          <td><%= rec.dotnumber %></td>
+          <td><%= rec.class_id %></td>
+          <td><%= rec.rating %></td>
+          <td><%= rec.review %></td>
+          <td> <%= rec.email %></td>
+
+
+        </tr>
+      <% end %>
+    </table>
+    <%= link_to 'Back', admin_path %>
+  </div>
+
+
+</div>

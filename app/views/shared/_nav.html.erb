@@ -1,0 +1,16 @@
+<ul id="navbar">
+  <li><%= link_to "Home", root_path %></li>
+  <%- #If user is student show Student tab  -%>
+  <% if !current_user.teacher? || current_user.admin? %>
+    <li><%= link_to "Student", studenthome_path %></li>
+  <% end %>
+  <%- #If user is a teacher show Teacher tab  -%>
+  <% if current_user.teacher? || current_user.admin? %>
+    <li><%= link_to "Teacher", teacherhome_path %></li>
+  <% end %>
+  <%- #If user is an admin show Admin tab  -%>
+  <% if current_user.admin? %>
+    <li><%= link_to "Admin Panel", admin_path %></li>
+  <% end %>
+  <li id="logout"><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
+</ul>

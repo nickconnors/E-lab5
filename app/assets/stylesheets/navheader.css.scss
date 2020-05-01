@@ -1,0 +1,42 @@
+body {
+  margin: 0;
+  padding-top: 56px;
+}
+
+h1 {
+  margin: 0;
+}
+
+#navbar {
+  list-style-type: none;
+  margin: 0;
+  padding: 0px 0px 10px 0px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  overflow: hidden;
+  background-clip: content-box;
+  //background-color: #333;
+  background-color: #bb0000;
+}
+
+#navbar li {
+  float: left;
+}
+
+#navbar #logout {
+  float: right
+}
+
+#navbar li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+#navbar a:hover {
+  //background-color: #bb0000;
+  background-color: #333;
+}

@@ -1,0 +1,58 @@
+<div class="basic">
+  <div class="table">
+    <table>
+      <thead>
+      <th><%= link_to "First Name", :sort => "firstname" %></th>
+      <th><%= link_to "Last Name", :sort => "lastname" %></th>
+      <th><%= link_to "Dot Number", :sort => "dotnumber" %></th>
+      <th><%= link_to "Monday Start", :sort => "mondaystart" %></th>
+      <th><%= link_to "Monday End", :sort => "mondayend" %></th>
+      <th><%= link_to "Tuesday Start", :sort => "tuesdaystart" %></th>
+      <th><%= link_to "Tuesday End", :sort => "tuesdayend" %></th>
+      <th><%= link_to "Wednesday Start", :sort => "wednesdaystart" %></th>
+      <th><%= link_to "Wednesday End", :sort => "wednesdayend" %></th>
+      <th><%= link_to "Thursday Start", :sort => "thursdaystart" %></th>
+      <th><%= link_to "Thursday End", :sort => "thursdayend" %></th>
+      <th><%= link_to "Friday Start", :sort => "fridaystart" %></th>
+      <th><%= link_to "Friday End", :sort => "fridayend" %></th>
+      <th><%= link_to "Emails", :sort => "email" %></th>
+      <th><%= link_to "Grades" %></th>
+
+      </thead>
+      <tbody>
+      <% @students.each do |student| %>
+        <tr>
+          <td><%= student.firstname %></td>
+          <td><%= student.lastname %></td>
+          <td><%= student.dotnumber %></td>
+          <td><%= student.mondaystart.strftime("%H:%M") %></td>
+          <td><%= student.mondayend.strftime("%H:%M") %></td>
+          <td><%= student.tuesdaystart.strftime("%H:%M") %></td>
+          <td><%= student.tuesdayend.strftime("%H:%M") %></td>
+          <td><%= student.wednesdaystart.strftime("%H:%M") %></td>
+          <td><%= student.wednesdayend.strftime("%H:%M") %></td>
+          <td><%= student.thursdaystart.strftime("%H:%M") %></td>
+          <td><%= student.thursdayend.strftime("%H:%M") %></td>
+          <td><%= student.fridaystart.strftime("%H:%M") %></td>
+          <td><%= student.fridayend.strftime("%H:%M") %></td>
+          <td><%= student.email %></td>
+          <td>
+            <%- # display the nested fields -%>
+            <% student.grades.each do |grade| %>
+
+              <p><%= grade.section %>
+                <%= grade.grade %>
+                <% if grade.preference %>
+                  Preferred
+                <% end %></p>
+
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <%= link_to 'Back', admin_path %>
+</div>

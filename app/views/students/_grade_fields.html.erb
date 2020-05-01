@@ -1,0 +1,10 @@
+<p class="nested-fields">
+  <%= f.label 'Class Name:' %>
+  <%= f.collection_select(:section, Course.select(:class_id).distinct, :class_id, :class_id) %>
+  <%= f.label 'Grade:' %>
+  <%= f.select :grade, ['A+', 'A', 'A-', 'B+', 'B', 'B-', 'C+', 'C', 'C-', 'D+', 'D', 'D-', 'E'], :prompt => 'Select One' %>
+  <%= f.label 'Preferred:' %>
+  <%= f.check_box :preference %>
+  <%= f.hidden_field :_destroy %>
+  <%= link_to_remove_association "remove Class/Grade", f, class: ' btn' %>
+</p>

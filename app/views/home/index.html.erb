@@ -1,0 +1,13 @@
+<div class="basic">
+  <h1>Home</h1>
+  <p>Welcome to the Spring 2020 TA selection page</p>
+  <%- #Display teacher instructions if a user is a tecaher  -%>
+  <% if @user.teacher? %>
+    <p>Go to the Teacher page to submit recmommendations, requests and evaluations</p>
+  <% end %>
+  <%- #Display student instructions if a user is a student  -%>
+  <% if !@user.teacher? %>
+    <p>Go to the Student page to submit/edit your application</p>
+  <% end %>
+  <%= link_to "Current Courses", 'courses#index' %>
+</div>

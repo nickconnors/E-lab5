@@ -1,0 +1,21 @@
+<div class="basic">
+  <table>
+    <tr>
+      <th>Email</th>
+      <th>Teacher?</th>
+      <th>Admin?</th>
+    </tr>
+    <tr>
+      <td><%= @user.email %></td>
+      <td><%= @user.teacher %></td>
+      <td><%= @user.admin %></td>
+      <td><%= link_to '<button type="button">Edit</button>'.html_safe, edit_user_path(@user) %></td>
+      <td><%= link_to '<button type="button">Delete</button>'.html_safe, user_path(@user),
+                      method: :delete,
+                      data: {confirm: 'Are you sure?'} %></td>
+    </tr>
+  </table>
+</div>
+<p>
+  <%= link_to '<button type="button">All Users</button>'.html_safe, users_path %>
+</p>

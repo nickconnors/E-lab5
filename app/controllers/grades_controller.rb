@@ -1,0 +1,3 @@
+class GradesController < ApplicationController
+
+end

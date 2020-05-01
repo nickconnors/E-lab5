@@ -1,0 +1,12 @@
+Correctness: Good job with data validation on sign up, student application form! Admin probably shouldn't have ability to access student and teacher views. Teacher recommendations, requests, and evaluations don't seem to validate form data. If teacher enters in a negative rating for an evaluation, this causes the app to crash when loading the evaluation. App crashes if admin attempts to delete/edit a teacher evaluation.
+
+Functionality/Features: Nice styling on home page (although some text is hard to read...dark text on dark background). Nice job letting students edit their application forms. There should probably be a separate admin sign-up instead of forcing admins to use the rails console once they've signed up. Great job implementing functionality to show all graders who meet requirements for a course! Once a user is logged in, home page looks very nice. Good job letting admins sort classes! There are some usability flaws overall, but with a few fixes this app would be very useful!
+
+Design: Controller actions seem simple, yet useful. Great job adding validations for models! Good use of embedded ruby to reduce repetition in front-end code. Database schema seems appropriately complex!
+
+Documentation: Good README! Good documentation for all files related to courses. However, just about all other documentation seems to be missing. Commit messages look good!
+
+Style: Styling looks good overall, however there is some inconsistent spacing, commenting between files.
+
+
+Have a great summer!

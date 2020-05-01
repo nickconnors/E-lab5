@@ -1,0 +1,80 @@
+<div class="basic">
+  <h2>
+    Your Information
+  </h2>
+  <p>
+    <strong>First Name: </strong>
+    <%= @student.firstname %>
+  </p>
+  <p>
+    <strong>Last Name: </strong>
+    <%= @student.lastname %>
+  </p>
+  <p>
+    <strong>Dotnumber: </strong>
+    <%= @student.dotnumber %>
+  </p>
+
+  <h2>
+    Available Times:
+  </h2>
+  <p>
+    <strong>Monday Availability: </strong>
+    <%= @student.mondaystart.strftime("%H:%M") %>
+    to
+    <%= @student.mondayend.strftime("%H:%M") %>
+  </p>
+  <p>
+    <strong>Tuesday Availability: </strong>
+    <%= @student.tuesdaystart.strftime("%H:%M") %>
+    to
+    <%= @student.tuesdayend.strftime("%H:%M") %>
+  </p>
+  <p>
+    <strong>Wednesday Availability: </strong>
+    <%= @student.wednesdaystart.strftime("%H:%M") %>
+    to
+    <%= @student.wednesdayend.strftime("%H:%M") %>
+  </p>
+  <p>
+    <strong>Thursday Availability: </strong>
+    <%= @student.thursdaystart.strftime("%H:%M") %>
+    to
+    <%= @student.thursdayend.strftime("%H:%M") %>
+  </p>
+  <p>
+    <strong>Friday Availability: </strong>
+    <%= @student.fridaystart.strftime("%H:%M") %>
+    to
+    <%= @student.fridayend.strftime("%H:%M") %>
+  </p>
+  <h2>
+    Your classes:
+  </h2>
+  <div class="display">
+    <table>
+      <tr>
+        <th>Class</th>
+        <th>Grade</th>
+        <th>Preference</th>
+      </tr>
+      <%- # display the nested fields -%>
+      <% @student.grades.each do |grade| %>
+        <tr>
+          <td><%= grade.section %></td>
+          <td><%= grade.grade %></td>
+          <td>
+            <% if grade.preference %>
+              Preferred
+            <% end %></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+  <p>
+    <strong>Email: </strong>
+    <%= @student.email %>
+  </p>
+  <p><%= link_to "Edit", edit_student_path(@student) %></p>
+  <%= link_to 'Back', studenthome_path %>
+</div>

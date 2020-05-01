@@ -1,0 +1,28 @@
+Enter the student you would like to request
+<%= form_for @request do |f| %>
+  <p>
+    <%= f.label 'Grader First Name:' %>
+    <%= f.text_field :firstname %>
+  </p>
+  <p>
+    <%= f.label 'Grader Last Name:' %>
+    <%= f.text_field :lastname %>
+  </p>
+  <p>
+    <%= f.label 'Grader Dot Number:' %>
+    <%= f.text_field :dotnumber %>
+  </p>
+  <p>
+    <%= f.label 'Class Name' %>
+    <%= f.collection_select(:class_id, Course.select(:class_id).distinct, :class_id, :class_id) %>
+  </p>
+  <p>
+    <%= f.label 'Class Section Number' %>
+    <%= f.text_field :section %>
+  </p>
+  <div class="form-actions">
+    <p>
+      <%= f.submit %>
+    </p>
+  </div>
+<% end %>

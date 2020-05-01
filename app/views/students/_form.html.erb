@@ -1,0 +1,86 @@
+<%- # checks for errors in the data entered on the form.  -%>
+<% if @student.errors.any? %>
+  <div class="error">
+    <h2>
+      <%- # tells the user that the data wasn't saved due to error or errors, also prints the number of errors.  -%>
+      <%= pluralize(@student.errors.count, "error")
+      %> Prohibited the data from being saved:
+    </h2>
+    <%- # Prints error message  -%>
+    <ul>
+      <% @student.errors.full_messages.each do
+      |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_for @student do |f| %>
+  <p>
+    <%= f.label 'First Name:' %>
+    <%= f.text_field :firstname %>
+  </p>
+  <p>
+    <%= f.label 'Last Name:' %>
+    <%= f.text_field :lastname %>
+  </p>
+  <p>
+    <%= f.label 'Dot Number:' %>
+    <%= f.text_field :dotnumber %>
+  </p>
+
+  <div class="display">
+    <table>
+      <tr>
+        <td><%= f.label 'Monday Free Time:' %></td>
+        <td><%= f.time_select :mondaystart %></td>
+        <td><%= f.label 'to' %></td>
+        <td><%= f.time_select :mondayend %></td>
+      </tr>
+      <tr>
+        <td><%= f.label 'Tuesday Free Time:' %></td>
+        <td><%= f.time_select :tuesdaystart %></td>
+        <td><%= f.label 'to' %></td>
+        <td><%= f.time_select :tuesdayend %></td>
+      </tr>
+      <tr>
+        <td><%= f.label 'Wednesday Free Time:' %></td>
+        <td><%= f.time_select :wednesdaystart %></td>
+        <td><%= f.label 'to' %></td>
+        <td><%= f.time_select :wednesdayend %></td>
+      </tr>
+      <tr>
+        <td><%= f.label 'Thursday Free Time:' %></td>
+        <td><%= f.time_select :thursdaystart %></td>
+        <td><%= f.label 'to' %></td>
+        <td><%= f.time_select :thursdayend %></td>
+      </tr>
+      <tr>
+        <td><%= f.label 'Friday Free Time:' %></td>
+        <td><%= f.time_select :fridaystart %></td>
+        <td><%= f.label 'to' %></td>
+        <td><%= f.time_select :fridayend %></td>
+      </tr>
+    </table>
+  </div>
+  <%- #get the nested fields for grades  -%>
+  <div class='grades'>
+    <%= f.fields_for :grades do |builder| %>
+      <%= render 'grade_fields', f: builder %>
+    <% end %>
+  </div>
+  <p class="btn">
+    <%- # allows nested fields to be created and deleted using Javascript  -%>
+    <%= link_to_add_association 'Add Class/Grade', f, :grades, data: {
+        association_insertion_node: '.grades', association_insertion_method: :append} %>
+  </p>
+  <p>Unsure what grades you should put? click <%= link_to 'here', open_courses_path, :target => '_blank' %> for a list
+    of classes that need TAs</p>
+
+  <div class="form-actions">
+    <p>
+      <%= f.submit %>
+    </p>
+  </div>
+<% end %>

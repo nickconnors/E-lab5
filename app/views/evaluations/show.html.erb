@@ -1,0 +1,25 @@
+<div class="basic">
+  <%- #Display all fields of an evualuation after submitting  -%>
+  <h1>Thank your submitting a evaluation</h1>
+  <table>
+    <tr>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Dot Number</th>
+      <th>Class Name</th>
+      <th>Rating</th>
+      <th>Review</th>
+    </tr>
+
+    <tr>
+      <td><%= @evaluation.firstname %></td>
+      <td><%= @evaluation.lastname %></td>
+      <td><%= @evaluation.dotnumber %></td>
+      <td><%= @evaluation.class_id %></td>
+      <td><%= @evaluation.rating %></td>
+      <td><%= @evaluation.review %></td>
+    </tr>
+
+  </table>
+
+</div>

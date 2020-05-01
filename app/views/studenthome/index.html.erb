@@ -1,0 +1,13 @@
+<div class="basic">
+  <%- #Check if student made an application  -%>
+  <% if Student.exists?(:email => @user.email) %>
+    <% student = Student.find_by_email(@user.email) %>
+    <p><Strong>Hello <%= student.firstname %>!</Strong></p>
+    <p>You have already submited a TA request form</p>
+    <p><%= link_to "View/edit Your Submission", student_path(student) %></p>
+  <% else %>
+    <p><strong>Hello future TA!</strong></p>
+    <p>You have not yet submitted a TA request form</p>
+    <p><%= link_to "Create New Submission", new_student_path %></p>
+  <% end %>
+</div>

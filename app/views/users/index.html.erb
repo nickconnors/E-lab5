@@ -1,0 +1,23 @@
+<div class="basic">
+  <div class="table">
+    <table>
+      <tr>
+        <th><%= link_to "Email", :sort => "email" %></th>
+        <th><%= link_to "Teacher?", :sort => "teacher" %></th>
+        <th><%= link_to "Admin?", :sort => "admin" %></th>
+      </tr>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= user.email %></td>
+          <td><%= user.teacher %></td>
+          <td><%= user.admin %></td>
+          <td><%= link_to '<button type="button">Edit</button>'.html_safe, edit_user_path(user) %></td>
+          <td><%= link_to '<button type="button">Delete</button>'.html_safe, user_path(user),
+                          method: :delete,
+                          data: {confirm: 'Are you sure?'} %></td>
+        </tr>
+      <% end %>
+    </table>
+    <%= link_to 'Back', admin_path %>
+  </div>
+</div>

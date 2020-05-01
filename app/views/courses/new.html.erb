@@ -1,0 +1,79 @@
+<div class="basic">
+  <h1>New Course</h1>
+  <%- # checks for errors in the data entered on the form.  -%>
+  <% if @course.errors.any? %>
+    <div class="error">
+      <h2>
+        <%- # tells the user that the data wasn't saved due to error or errors, also prints the number of errors.  -%>
+        <%= pluralize(@course.errors.count, "error")
+        %> Prohibited the data from being saved:
+      </h2>
+      <%- # Prints error message  -%>
+      <ul>
+        <% @course.errors.full_messages.each do
+        |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%= form_for :course, url: courses_path(@course) do |f| %>
+    <p>
+      <%= f.label :class_id %>:
+      <%= f.text_field :class_id %><br/>
+    </p>
+
+    <p>
+      <%= f.label :section %>:
+      <%= f.text_field :section %><br/>
+    </p>
+
+    <p>
+      <%= f.label :component %>:
+      <%= f.text_field :component %><br/>
+    </p>
+
+    <p>
+      <%= f.label :days %>:
+      <%= f.text_field :days %><br/>
+    </p>
+
+    <p>
+      <%= f.label :start %>:
+      <%= f.time_select :start %><br/>
+    </p>
+
+    <p>
+      <%= f.label :end %>:
+      <%= f.time_select :end %><br/>
+    </p>
+
+    <p>
+      <%= f.label :location %>:
+      <%= f.text_field :location %><br/>
+    </p>
+
+    <p>
+      <%= f.label :professor %>:
+      <%= f.text_field :professor %><br/>
+    </p>
+
+    <p>
+      <%= f.label :grader %>:
+      <%= f.text_field :grader %><br/>
+    </p>
+    <p>
+      <%= f.label :Graders_Needed %>
+      <%= f.text_field :gradersneeded %>
+    </p>
+    <p>
+      <%= f.label :Graders_Filled %>
+      <%= f.text_field :gradersfilled %>
+    </p>
+
+    <p>
+      <%= f.submit %>
+    </p>
+
+  <% end %>
+</div>

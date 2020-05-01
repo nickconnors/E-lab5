@@ -1,0 +1,65 @@
+<div class="basic">
+  <% if current_user.admin? %>
+    <p>
+      <%= link_to '<button type="button">Reset Database</button>'.html_safe, course_refresh_path,
+                  data: {confirm: 'Are you sure? This will reset the database.'} %>
+    </p>
+    <p>
+      <%= link_to '<button type="button">Add Course</button>'.html_safe, new_course_path %>
+    </p>
+    <p>
+      <%= form_tag 'courses', method: 'get' do %>
+        Filter by
+        <%= select_tag :class_id, options_for_select(@courses.distinct.pluck(:class_id)), prompt: "Course" %>
+        <%= select_tag :professor, options_for_select(@courses.distinct.pluck(:professor).sort), prompt: "Professor" %>
+        <%= select_tag :days, options_for_select(@courses.distinct.pluck(:days)), prompt: "Days" %>
+        <%= select_tag :start, options_for_select(@courses.distinct.pluck(:start)), prompt: "Start" %>
+        <%= select_tag :end, options_for_select(@courses.distinct.pluck(:end)), prompt: "End" %>
+        <%= select_tag :component, options_for_select(@courses.distinct.pluck(:component)), prompt: "Component" %>
+        <%= submit_tag "Submit" %>
+        <%= link_to '<button type="button">Reset</button>'.html_safe, courses_path %>
+      <% end %>
+    </p>
+  <% end %>
+  <div class="table">
+    <table>
+      <tr>
+        <th>Class</th>
+        <th>Section</th>
+        <th>Component</th>
+        <th>Days</th>
+        <th>Start</th>
+        <th>End</th>
+        <th>Location</th>
+        <th>Professor</th>
+        <th>Grader</th>
+        <th>Graders Needed</th>
+        <th>Graders Filled</th>
+      </tr>
+      <% @courses.each do |course| %>
+
+        <tr>
+
+
+          <td><%= course.class_id %></td>
+          <td><%= course.section %></td>
+          <td><%= course.component %></td>
+          <td><%= course.days %></td>
+          <td><%= course.start.strftime("%H:%M") %></td>
+          <td><%= course.end.strftime("%H:%M") %></td>
+          <td><%= course.location %></td>
+          <td><%= course.professor %></td>
+          <td><%= course.grader %></td>
+          <td style="text-align: center"><%= course.gradersneeded %></td>
+          <td style="text-align: center"><%= course.gradersfilled %></td>
+          <% if current_user.admin? %>
+            <td><%= link_to '<button type="button">Edit</button>'.html_safe, edit_course_path(course) %></td>
+            <td><%= link_to '<button type="button">Delete</button>'.html_safe, course_path(course),
+                            method: :delete,
+                            data: {confirm: 'Are you sure?'} %></td>
+          <% end %>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
